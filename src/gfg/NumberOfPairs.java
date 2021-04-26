@@ -1,16 +1,107 @@
 package gfg;
 
+import java.util.Arrays;
+
 public class NumberOfPairs {
-    static long countPairs(int x[], int y[], int M, int N)
-    {
-        // your code here
-        int count = 0;
-        for(int i = 0; i < M; i++) {
-            for(int j = 0; j < N; j++) {
-                if(Math.pow(x[i], y[j]) > Math.pow(y[j], x[i]))
-                    count++;
+//    static long countPairs(int x[], int y[], int M, int N)
+//    {
+//        // your code here
+//        int count = 0;
+//        for(int i = 0; i < M; i++) {
+//            for(int j = 0; j < N; j++) {
+//                if(Math.pow(x[i], y[j]) > Math.pow(y[j], x[i]))
+//                    count++;
+//            }
+//        }
+//        return count;
+//    }
+
+    public static int getIndex(int y[], int n, int ele) {
+
+        int low = 0;
+        int high = n - 1;
+        int ans = -1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (y[mid] > ele) {
+                ans = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
             }
         }
-        return count;
+        return ans;
+    }
+
+
+   public static long countPairs(int[] x, int[] y, int m, int n) {
+
+        int zeros = 0, one = 0, three = 0, four = 0, two = 0;
+        Arrays.sort(x);
+        Arrays.sort(y);
+
+        for (int i = 0; i < n; i++) {
+            if (y[i] == 0) zeros++;
+            if (y[i] == 1) one++;
+            if (y[i] == 3) three++;
+            if (y[i] == 4) four++;
+            if (y[i] == 2) two++;
+        }
+//        long ans = 0;
+//        for(int i = 0; i < x.length; i++) {
+//            if(x[i] == 1) {
+//                ans += zeros;
+//            } else if(x[i] == 2) {
+//                int index = getIndex(y, y.length, 2);
+//                if(index != -1) {
+//                    ans += y.length - index;
+//                }
+//                ans -= three + four;
+//                ans += zeros;
+//                ans += one;
+//            } else {
+//                int index = getIndex(y, y.length, x[i]);
+//                if(index != -1) {
+//                    ans -= y.length - index;
+//                }
+//                ans += zeros;
+//                ans += one;
+//                if(x[i] == 3) {
+//                    ans += two;
+//                }
+//            }
+//        }
+//
+//    return ans;
+
+//
+//        //traversing x elements
+        long ans = 0;
+        for (int i = 0; i < m; i++) {
+            if (x[i] == 0) {
+                continue;
+            } else if (x[i] == 1) {
+                ans += zeros;
+            } else if (x[i] == 2) {
+                int index = getIndex(y, n, 2);
+                if (index != -1) {
+                    ans += n - index;
+                }
+                ans -= three;
+                ans -= four;
+                ans += one + zeros;
+            } else {
+                int index = getIndex(y, n, x[i]);
+                if (index != -1) {
+                    ans += n - index;
+                }
+                ans += one + zeros;
+                if (x[i] == 3) {
+                    ans += two;
+                }
+            }
+        }
+        return ans;
+
     }
 }

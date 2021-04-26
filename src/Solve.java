@@ -7,7 +7,11 @@ public class Solve {
 
     public static void main(String args[]) throws IOException {
 
-        RearrangeArrayAlt.rearrange(new int[]{10,20,30,40,50,60,70,80,90,100,110}, 11);
+        System.out.println(InversionCount.mergeSortAndCount(new long[]{1, 20, 6, 4, 5}, 0, 4));
+
+//        System.out.println(NumberOfPairs.countPairs(new int[]{2,1,6}, new int[]{1,5}, 3, 2));
+
+//        RearrangeArrayAlt.rearrange(new int[]{10,20,30,40,50,60,70,80,90,100,110}, 11);
 
 //        System.out.println(KadanesAlgorithm.maxSubarraySum(new int[]{-1,-2,-3,-4}, 5));
 
