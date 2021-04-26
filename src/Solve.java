@@ -7,7 +7,9 @@ public class Solve {
 
     public static void main(String args[]) throws IOException {
 
-        System.out.println(InversionCount.mergeSortAndCount(new long[]{1, 20, 6, 4, 5}, 0, 4));
+        System.out.println(EquilbriumPoint.equilibriumPoint(new long[]{1,3,5,2,2}, 5));
+
+//        System.out.println(InversionCount.mergeSortAndCount(new long[]{1, 20, 6, 4, 5}, 0, 4));
 
 //        System.out.println(NumberOfPairs.countPairs(new int[]{2,1,6}, new int[]{1,5}, 3, 2));
 
