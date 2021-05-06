@@ -6,8 +6,16 @@ import java.util.ArrayList;
 public class Solve {
 
     public static void main(String args[]) throws IOException {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(1);
+        arrayList.add(2);
+        arrayList.add(3);
+        arrayList.add(4);
+        arrayList.add(5);
 
-        System.out.println(EquilbriumPoint.equilibriumPoint(new long[]{1,3,5,2,2}, 5));
+        ReverseArrayInGroups.reverseInGroups(arrayList, arrayList.size(), 3);
+        //        System.out.println(LeadersInAnArray.leaders(new int[]{16,17,4,3,5,2}, 5));
+//        System.out.println(EquilbriumPoint.equilibriumPoint(new long[]{1,3,5,2,2}, 5));
 
 //        System.out.println(InversionCount.mergeSortAndCount(new long[]{1, 20, 6, 4, 5}, 0, 4));
 
