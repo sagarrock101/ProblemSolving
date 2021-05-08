@@ -24,7 +24,7 @@ public class SetMatrixZeros {
         System.out.println(paintedRows);
         System.out.println(paintedCols);
 
-        Solve.printArray(matrix);
+//        Solve.printArray(matrix);
     }
 
     public void paintMatrixWithZeros(int[][] matrix, int row, int col, HashSet<Integer> paintedRows, HashSet<Integer> paintedCols) {
