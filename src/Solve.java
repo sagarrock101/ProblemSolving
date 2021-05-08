@@ -1,6 +1,3 @@
-import codeChef.Golf;
-import gfg.TrappingRainWater;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,8 +6,6 @@ public class Solve {
 
     public static void main(String args[]) throws IOException {
 
-//        System.out.println(TrappingRainWater.trappingWater(new int[]{7,4,0,9}, 4));
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String lines = br.readLine();
         try {
@@ -18,9 +13,7 @@ public class Solve {
             while (t-- > 0) {
                 lines = br.readLine();
                 int x = Integer.parseInt(lines.split(" ")[0]);
-                int a = Integer.parseInt(lines.split(" ")[1]);
-                int b = Integer.parseInt(lines.split(" ")[2]);
-                System.out.println(isHolePresent(x, a, b));
+                System.out.println(power(2, x - 1));
             }
         } catch (Exception e) {
 
@@ -28,16 +21,27 @@ public class Solve {
 
     }
 
-    public static String isHolePresent(int n, int x, int k) {
-        if (x % k == 0)
-            return "YES";
-
-        if (((n + 1) - x) % k == 0)
-            return "YES";
-        else
-            return "NO";
+    static boolean equalityCheck(int x) {
+        return (x ^ (x + 1)) == ((x + 2) ^ (x + 3));
     }
 
+    static long power(long x, long y)
+    {
+        long res = 1;     // Initialize result
+
+        while (y > 0)
+        {
+
+            // If y is odd, multiply x with result
+            if ((y & 1) != 0)
+                res =( res * x) % 1000000007;
+
+            // y must be even now
+            y = y >> 1; // y = y/2
+            x = (x * x) % 1000000007;  // Change x to x^2
+        }
+        return res;
+    }
 
 }
 
