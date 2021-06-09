@@ -1,2 +1,2 @@
 # ProblemSolving
-Programming problems solving
+Programming problems solving platforms such as leetcode, codechef and hackerearth
