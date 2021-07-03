@@ -1,5 +1,7 @@
 import codeChef.MaximumProduction;
+import codeChef.Relativity;
 import codeChef.ShortestRoute;
+import codeChef.XxOoRr;
 import leetcode.RomanToInteger;
 
 import java.io.BufferedReader;
@@ -19,25 +21,24 @@ public class Solve {
         try {
             int t = fastReader.nextInt();
             while (t-- > 0) {
-                int d = fastReader.nextInt();
-                int x = fastReader.nextInt();
-                int y = fastReader.nextInt();
-                int z = fastReader.nextInt();
-                System.out.println(maxProd(d, x, y, z));
+                int n = fastReader.nextInt();
+                int k = fastReader.nextInt();
+                int[] arr = new int[n];
+                for(int i = 0; i < arr.length; i++) {
+                    arr[i] = fastReader.nextInt();
+                }
+                System.out.println(getMinimumOperations(n, k, arr));
             }
         } catch (Exception e) {
 
         }
-
+        System.out.println(convertToBin(6));
 
     }
 
-    static int maxProd(int d, int x, int y, int z) {
-        int a = (7 * x);
-        int b = (d * y) + ( 7 - d * z);
-        return Math.max(a, b);
+    public static long findHeight(int g, int c) {
+        return (long) (Math.pow(c, 2) / (2L * g));
     }
-
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
@@ -81,43 +82,6 @@ public class Solve {
         }
     }
 
-
-    public static int[] minTimeRequired(int n, int m, int[] trains, int[] travellers) {
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
-        int[] res = new int[m];
-        for (int i = 0; i < trains.length; i++) {
-            if (trains[i] != 0)
-                hashMap.put(i + 1, trains[i]);
-        }
-
-        for (int i = 0; i < travellers.length; i++) {
-            res[i] = getShortest(travellers[i], hashMap);
-        }
-
-        return res;
-    }
-
-    public static int getShortest(int traveller, HashMap<Integer, Integer> hashMap) {
-        int res = 0;
-        int minDist = Integer.MAX_VALUE;
-        if (traveller == 1) {
-            return res;
-        }
-        for (Integer stnTrain : hashMap.keySet()) {
-            if (traveller == stnTrain) {
-                return res;
-            }
-
-            if (hashMap.get(stnTrain) == 1 && traveller >= stnTrain
-                    || hashMap.get(stnTrain) == 2 && traveller <= stnTrain) {
-                int distanceDiff = Math.abs(stnTrain - traveller);
-                minDist = Math.min(minDist, distanceDiff);
-            }
-        }
-        res = (minDist == Integer.MAX_VALUE) ? -1 : minDist;
-        return res;
-    }
-
     static long power(long x, long y) {
         long res = 1;     // Initialize result
 
@@ -132,6 +96,39 @@ public class Solve {
             x = (x * x) % 1000000007;  // Change x to x^2
         }
         return res;
+    }
+
+    public static String convertToBin(int num) {
+        String temp = "";
+        for(int i = 0; num > 0; i++) {
+            temp += (num % 2);
+            num /= 2;
+        }
+        return temp;
+
+    }
+
+    public static int getMinimumOperations(int n, int k, int[] arr) {
+        int[] sum = new int[33];
+        for(int i = 0; i < n; i++) {
+            int x = arr[i];
+            int j = 32;
+            while (x > 0) {
+                sum[j] = sum[j] + x%2;
+                j--;
+                x /= 2;
+            }
+        }
+        int minOperations = 0;
+        for(int i = 0; i < 33; i ++) {
+            if(sum[i] % k == 0) {
+                minOperations = minOperations +  (sum[i]/k);
+            } else {
+                minOperations = minOperations +  (sum[i] / k) + 1;
+            }
+        }
+
+        return minOperations;
     }
 
 
