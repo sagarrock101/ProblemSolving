@@ -10,19 +10,21 @@ public class Solve {
 
     public static long modular = 1000000007;
     private static long[] a;
-    public static long[] chefolaArray = new long[10000];
+    public static long[] chefolaArray = new long[100001];
+    public static  long[] prefixChefola = new long[100001];
 
 
     public static void main(String args[]) throws IOException {
-
+        chefolaArray[0] = 0;
+        prefixChefola[0] = 0;
       computeChefolaNumbers();
 
         FastReader fastReader = new FastReader();
         try {
             int t = fastReader.nextInt();
             while (t-- > 0) {
-               long l = fastReader.nextLong();
-               long r = fastReader.nextLong();
+                long l = fastReader.nextLong();
+                long r = fastReader.nextLong();
                 System.out.println(answerQuestions(l, r));
             }
         } catch (Exception e) {
@@ -35,20 +37,8 @@ public class Solve {
     public static void computeChefolaNumbers() {
         for (int i = 1; i < chefolaArray.length; i++) {
             chefolaArray[i] = getChefolaNumber(i);
+            prefixChefola[i] = prefixChefola[i - 1] + chefolaArray[i];
         }
-//        System.out.println("Before prefix sum");
-//        System.out.println(Arrays.toString(chefolaArray));
-
-        // 2, 4, 5, 6
-        // 2, 6, 11, 17
-        // 0, 1, 2,  3
-        //
-        //prefix sum
-        for(int i = 1; i < chefolaArray.length; i++) {
-            chefolaArray[i] = chefolaArray[i - 1] + chefolaArray[i];
-        }
-//        System.out.println("prefix sum of chefola array: ");
-//        System.out.println(Arrays.toString(chefolaArray));
     }
 
     public static long findOptimum(int[] arr) {
@@ -155,16 +145,35 @@ public class Solve {
 
 
     public static long getChefolaNumber(int num) {
-        if(num == 1 || num == 2 || num == 3 || num == 4 || num == 5 || num == 6 || num == 7 || num == 8 || num == 9)
+        //822
+        if(num < 10)
             return num;
-        long quotientValue = num / 10;
-        String quoString = String.valueOf(quotientValue);
-        long newNum = (long) ((num * Math.pow(10, quoString.length())) + revNum(quotientValue));
-        String stringNum = String.valueOf(newNum);
-        if(stringNum.length() % 2 != 0)
-            return newNum;
-        else
-            return 0;
+        long chefNum = num;
+        num /= 10;
+        while (num != 0) {
+            chefNum = chefNum * 10 + num % 10;
+            num /= 10;
+        }
+        return chefNum;
+//        long palin = num;
+//        num /= num;
+//        while (num > 0) {
+//            palin = (palin * 10) + (num % 10);
+//            num /= num;
+//        }
+
+//        return palin;
+//        long quotientValue = num / 10;
+//        String quoString = String.valueOf(quotientValue);
+//        long newNum = (long) ((num * Math.pow(10, quoString.length())) + revNum(quotientValue));
+//        String stringNum = String.valueOf(newNum);
+//        if(stringNum.length() % 2 != 0)
+//            return newNum;
+//        else
+//            return 0;
+
+
+
     }
 
     public static long revNum(long num) {
@@ -179,31 +188,37 @@ public class Solve {
     }
 
     public static long answerQuestions(long l, long r) {
-        long answer = 0;
-//        for(long i = l + 1; i <= r; i++) {
-//            answer = answer + chefolaArray[(int) i];
-////        }
-//        System.out.println("L: " + l + " R: " + (r) );
-//        System.out.println(chefolaArray[(int) l]);
-//        System.out.println(chefolaArray[(int) r]);
-        answer = Math.abs(chefolaArray[(int) (l)] - chefolaArray[(int) (r)]);
-//        System.out.println("Anser: " + answer);
-        return power(l, answer);
+        long y = 0;
+        long x = 0;
+        x = chefolaArray[(int) l];
+        y = prefixChefola[(int) r] - prefixChefola[(int) l];
+        return power(x, y);
         // 1, 2, 3, 4, 5, 6, 7, 8,
     }
 
     static long power(long x, long y) {
-        long res = 1;     // Initialize result
-
-        while (y > 0) {
-
-            // If y is odd, multiply x with result
-            if ((y & 1) != 0)
-                res = (res * x) % 1000000007;
-
-            // y must be even now
-            y = y >> 1; // y = y/2
-            x = (x * x) % 1000000007;  // Change x to x^2
+//        long res = 1;     // Initialize result
+//
+//        while (y != 0) {
+//
+//            // If y is odd, multiply x with result
+//            if ((y & 1) != 0)
+//                res = (res * x) % modular;
+//
+//            // y must be even now
+//            y = y >> 1; // y = y/2
+//            x = (x * x) % modular;  // Change x to x^2
+//        }
+        long res=1;
+        while(y!=0){
+            if(y%2==0){
+                x=((x%modular)*(x%modular))%modular;
+                y= (long) Math.floor(y >> 1);
+            }
+            else{
+                res=((res%modular)*(x%modular))%modular;
+                y=y-1;
+            }
         }
         return res;
     }
