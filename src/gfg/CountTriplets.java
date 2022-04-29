@@ -40,6 +40,4 @@ public class CountTriplets {
         // in array
         return -1;
     }
-
-
 }

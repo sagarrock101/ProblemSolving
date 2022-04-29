@@ -1,10 +1,13 @@
 import codeChef.*;
+import gfg.*;
 import leetcode.RomanToInteger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
+
+import static MyArticlesSupportPrograms.FlowRetryKt.simple;
 
 public class Solve {
 
@@ -15,21 +18,24 @@ public class Solve {
 
 
     public static void main(String args[]) throws IOException {
-        chefolaArray[0] = 0;
-        prefixChefola[0] = 0;
-      computeChefolaNumbers();
-
-        FastReader fastReader = new FastReader();
-        try {
-            int t = fastReader.nextInt();
-            while (t-- > 0) {
-                long l = fastReader.nextLong();
-                long r = fastReader.nextLong();
-                System.out.println(answerQuestions(l, r));
-            }
-        } catch (Exception e) {
-
-        }
+//        System.out.println(SubArrayWithGivenSum.subarraySum3(new int[]{1, 2, 3, 7, 5}, 5, 12));
+//                                                                    //0, 1, 2, 3, 4
+//        System.out.println(SubArrayWithGivenSum.subarraySum3(new int[]{1, 2, 3, 6, 8, 6, 9}, 7, 15));
+//                                                                        //0, 1, 2, 3, 4, 5, 6
+////        1,2,3,4,5,6,7,8,9,10
+//        System.out.println(SubArrayWithGivenSum.subarraySum3(new int[]{1,2,3,4,5,6,7,8,9,10}, 10, 15));
+//        System.out.println(KadanesAlgorithm.maxSubarraySum(new int[]{1, 2, 3, -2, 5}, 5));
+        //        1, 2, 3, 4, 6, 7, 8
+        //        0, 1, 2, 3, 4, 5, 6
+//        System.out.println(MissingNumbers.missingNumberOptimized(new int[]{1, 2, 4, 6, 3, 7, 8}));
+//        MergeTwoArrays.merge2(new long[]{ 1, 3, 5, 7}, new long[]{0, 2, 6, 8, 9}, 4, 5);
+//        MergeTwoArrays.merge2(new long[]{1, 3, 5, 7}, new long[]{}, 4, 5);
+//        SpiralTraversal.spirallyTraverse(new int[][] {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}}, 4, 4);
+//        System.out.println(ParenthesisCheck.isPar("[()]{}{[()()]()}"));
+//        System.out.println(ParenthesisCheck.isPar("[(])"));
+//        System.out.println(ParenthesisCheck.isPar("[({[([{}])]})]"));
+        System.out.println(Arrays.toString(NextGreaterElement.nextLargerElement(new long[]{1, 3, 2, 4}, 4)));
+        System.out.println(Arrays.toString(NextGreaterElement.nextLargerElement(new long[]{6, 8, 0, 1, 3}, 4)));
     }
 
 
