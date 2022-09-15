@@ -1,13 +1,10 @@
-import codeChef.*;
+import codingninja.ReverseTheArray;
 import gfg.*;
-import leetcode.RomanToInteger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
-
-import static MyArticlesSupportPrograms.FlowRetryKt.simple;
 
 public class Solve {
 
@@ -34,8 +31,41 @@ public class Solve {
 //        System.out.println(ParenthesisCheck.isPar("[()]{}{[()()]()}"));
 //        System.out.println(ParenthesisCheck.isPar("[(])"));
 //        System.out.println(ParenthesisCheck.isPar("[({[([{}])]})]"));
-        System.out.println(Arrays.toString(NextGreaterElement.nextLargerElement(new long[]{1, 3, 2, 4}, 4)));
-        System.out.println(Arrays.toString(NextGreaterElement.nextLargerElement(new long[]{6, 8, 0, 1, 3}, 4)));
+//        System.out.println(Arrays.toString(NextGreaterElement.nextLargerElement(new long[]{1, 3, 2, 4}, 4)));
+//        System.out.println(Arrays.toString(NextGreaterElement.nextLargerElement(new long[]{6, 8, 0, 1, 3}, 4)));
+//        QueueStack.push(2);
+//        QueueStack.push(3);
+//        System.out.println(QueueStack.pop());
+//        QueueStack.push(4);
+//        System.out.println(QueueStack.pop());
+//        System.out.println(MaximumSubArraySum.maxOfSubArray(new int[] {1, 2, 3, 1, 4, 5, 2, 3, 6}, 9, 3));
+//        System.out.println(FirstNonRepeatingCharacters.FirstNonRepeating("aabc"));
+//        System.out.println(LongestCommonSubstring.longestCommonSubstring(new String[]{"flower", "flow", "flight"}));
+//        System.out.println(BinarySearch.binSrch(new int[]{1, 2, 3, 4, 5, 6},4, 0 , 5, 2));
+//        System.out.println(MissingNumber.missingNumber(new int[]{1,2,3,5}, 5));
+//        System.out.println(KadanesAlgorithm.maxSubarraySum(new int[]{-3, -4, 5, -1, 2, -4, 6, -1}, 8));
+//        System.out.println(KadanesAlgorithm.maxSubarraySum(new int[]{-2, 3, -1, 2}, 4));
+//        System.out.println(DuplicateNumbers.getDuplicates(new int[] {0, 3, 1, 2}, 4));
+        ArrayList<Integer> ar = new ArrayList<>();
+        ar.add(10);
+        ar.add(4);
+        ar.add(5);
+        ar.add(2);
+        ar.add(3);
+        ar.add(6);
+        ar.add(1);
+        ar.add(6);
+//        System.out.println();
+        ReverseTheArray.reverseArray(ar, 3);
+        ar.clear();
+
+        ar.add(1);
+        ar.add(2);
+        ar.add(3);
+        ar.add(4);
+        ar.add(5);
+        ar.add(6);
+        ReverseTheArray.reverseArray(ar, 3);
     }
 
 

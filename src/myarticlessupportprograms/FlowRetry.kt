@@ -1,4 +1,4 @@
-package MyArticlesSupportPrograms
+package myarticlessupportprograms
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
